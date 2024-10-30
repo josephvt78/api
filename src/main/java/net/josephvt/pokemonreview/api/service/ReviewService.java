@@ -11,9 +11,5 @@ public interface ReviewService {
     ReviewDto getReviewById(int reviewId, int pokemonId);
 
     ReviewDto updateReview(ReviewDto reviewDto, int reviewId, int pokemonId);
-
-    /*PokemonResponse getAllPokemons(int pageNo, int pageSize);
-    PokemonDto getPokemonById(int id);
-    PokemonDto updatePokemon(PokemonDto pokemonDto, int id);
-    void deletePokemon(int id);*/
+    void deleteReviewById(int reviewId, int pokemonId);
 }
