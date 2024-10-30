@@ -2,15 +2,11 @@ package net.josephvt.pokemonreview.api.controllers;
 
 import net.josephvt.pokemonreview.api.dto.PokemonDto;
 import net.josephvt.pokemonreview.api.dto.PokemonResponse;
-import net.josephvt.pokemonreview.api.models.Pokemon;
 import net.josephvt.pokemonreview.api.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
