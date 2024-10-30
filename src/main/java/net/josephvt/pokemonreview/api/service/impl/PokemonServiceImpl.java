@@ -1,6 +1,7 @@
 package net.josephvt.pokemonreview.api.service.impl;
 
 import net.josephvt.pokemonreview.api.dto.PokemonDto;
+import net.josephvt.pokemonreview.api.exceptions.PokemonNotFoundException;
 import net.josephvt.pokemonreview.api.models.Pokemon;
 import net.josephvt.pokemonreview.api.repository.PokemonRepository;
 import net.josephvt.pokemonreview.api.service.PokemonService;
@@ -36,6 +37,7 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public List<PokemonDto> getAllPokemons() {
+        //Pokemon pokemon1 = pokemonRepository.findById(33333).orElseThrow(() -> new PokemonNotFoundException("Pokemon could not be found by id"));
         List<Pokemon> pokemons = pokemonRepository.findAll();
         return pokemons.stream().map(pokemon -> mapToDto(pokemon)).collect(Collectors.toList());
     }
