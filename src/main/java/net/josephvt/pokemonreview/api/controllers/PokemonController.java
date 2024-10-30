@@ -29,8 +29,8 @@ public class PokemonController {
     }
 
     @GetMapping("pokemon/{id}")
-    public Pokemon pokemonDetail(@PathVariable int id) {
-        return new Pokemon(id, "Squirtle", "Water");
+    public ResponseEntity<PokemonDto> pokemonDetail(@PathVariable int id) {
+        return ResponseEntity.ok(pokemonService.getPokemonById(id));
     }
 
     @PostMapping("pokemon/create")
@@ -40,10 +40,9 @@ public class PokemonController {
     }
 
     @PutMapping("pokemon/{id}/update")
-    public ResponseEntity<Pokemon> updatePokemon(@RequestBody Pokemon pokemon, @PathVariable("id") int pokemonId) {
-        System.out.println(pokemon.getName());
-        System.out.println(pokemon.getType());
-        return ResponseEntity.ok(pokemon);
+    public ResponseEntity<PokemonDto> updatePokemon(@RequestBody PokemonDto pokemonDto, @PathVariable("id") int pokemonId) {
+        PokemonDto updatedPokemonDto = pokemonService.updatePokemon(pokemonDto, pokemonId);
+        return ResponseEntity.ok(updatedPokemonDto);
     }
 
     @DeleteMapping("pokemon/{id}/delete")
