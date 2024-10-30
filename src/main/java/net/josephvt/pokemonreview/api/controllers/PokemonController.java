@@ -1,6 +1,7 @@
 package net.josephvt.pokemonreview.api.controllers;
 
 import net.josephvt.pokemonreview.api.dto.PokemonDto;
+import net.josephvt.pokemonreview.api.dto.PokemonResponse;
 import net.josephvt.pokemonreview.api.models.Pokemon;
 import net.josephvt.pokemonreview.api.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,12 @@ public class PokemonController {
     }
 
     @GetMapping("pokemon")
-    public ResponseEntity<List<PokemonDto>> getPokemons() {
-        List<PokemonDto> pokemonDtos = pokemonService.getAllPokemons();
-        return ResponseEntity.ok(pokemonDtos);
+    public ResponseEntity<PokemonResponse> getPokemons(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+            ) {
+        PokemonResponse pokemonResponse = pokemonService.getAllPokemons(pageNo, pageSize);
+        return ResponseEntity.ok(pokemonResponse);
     }
 
     @GetMapping("pokemon/{id}")
