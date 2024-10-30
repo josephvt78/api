@@ -36,4 +36,9 @@ public class ReviewController {
         return ResponseEntity.ok(reviewService.getReviewById(reviewId, pokemonId));
     }
 
+    @PutMapping("/pokemon/{pokemonId}/reviews/{id}")
+    public ResponseEntity<ReviewDto> updateReview(@PathVariable(value = "pokemonId") int pokemonId, @PathVariable(value = "id") int reviewId, @RequestBody ReviewDto reviewDto) {
+        return ResponseEntity.ok(reviewService.updateReview(reviewDto, reviewId, pokemonId));
+    }
+
 }
